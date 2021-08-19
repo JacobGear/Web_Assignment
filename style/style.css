@@ -96,3 +96,16 @@ a {
 .footer p{
     color: #919191;
 }
+.products {
+    padding: 10px;
+    margin: 0 0 10px 0;
+    border: 1px solid;
+    border-radius: 0 10px 10px 10px;
+    background-color: #7B7B7D;
+    color: inherit;
+}
+#map {
+    width: 700px;
+    height: 500px;
+    left: 32%;
+}
