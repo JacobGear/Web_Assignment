@@ -5,23 +5,23 @@
 				"dogId": "DW-001",
 				"dogName": "Fido",
 				"dogType": "Poodle",
-				"dogType": "Small",
-				"description": "Excellant lap dog, doesn't shed.",
+				"dogSize": "Small",
+				"description": "Excellent lap dog, doesn't shed.",
 				"pricePerHour": "3.0"
 			},
 			{
 				"dogId": "DW-002",
 				"dogName": "Rover",
 				"dogType": "Springer Spanial",
-				"dogType": "Medium",
+				"dogSize": "Medium",
 				"description": "Very energetic, loves water. Good with kids",
 				"pricePerHour": "5.0"
 			},
 			{
 				"dogId": "DW-003",
 				"dogName": "Rex",
-				"dogType": "Retreiver",
-				"dogType": "Large",
+				"dogType": "Retriever",
+				"dogSize": "Large",
 				"description": "Eats everything, very friendly. Slobbers a lot.",
 				"pricePerHour": "5.0"
 			},
@@ -29,8 +29,8 @@
 				"dogId": "DW-004",
 				"dogName": "Digby",
 				"dogType": "St. Bernard",
-				"dogType": "Huge",
-				"description": "Excellant horse replacement",
+				"dogSize": "Huge",
+				"description": "Excellent horse replacement",
 				"pricePerHour": "10.0"
 			}
 
