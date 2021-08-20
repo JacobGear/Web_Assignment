@@ -1,22 +1,38 @@
 let animalsImport = (function(){
     let pub = {};
 
-    function animalStuff(animals) {
-        console.log(animals);
-        for(let dogs of animals[0]){
-            console.log(dogs);
-        }
+    function jsonToHtml(json) {
+        let html = "";
+        let keys = Object.keys(json);
+        let animals = json[keys];
+        let animalKeys = Object.keys(animals);
+        let dogs = animals[animalKeys];
+        dogs.forEach((dog) => {
+            html += "<div class = 'dog'>";
+            let dogKeys = Object.keys(dog);
+            dogKeys.forEach((dogKey) => {
+                html += "<strong>";
+                html += dogKey;
+                html += "</strong>";
+                html += " : ";
+                html += dog[dogKey];
+                html += "<br />";
+            })
+            html += "</div>";
+            html += "<hr />";
+        })
+
+        document.getElementById("products").innerHTML = html;
     }
 
     function importAnimals() {
-        $.ajax({
-            type: "GET",
-            url: "./json/animals.json",
-            cache: false,
-            success: function (data) {
-                animalStuff(data);
-            }
-        });
+        let request = new XMLHttpRequest();
+        request.open('GET', "./json/animals.json");
+        request.onload = () => {
+            let result = JSON.parse(request.responseText);
+            jsonToHtml(result);
+        }
+        request.send();
     }
 
 
