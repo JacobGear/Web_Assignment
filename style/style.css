@@ -83,9 +83,6 @@ a {
     padding-left: 50px;
 }
 .footer {
-    left: 0px;
-    bottom: 0px;
-    position: absolute;
     background: #42455a;
     padding: 10px;
     margin: 0 0 0 0;
@@ -96,11 +93,26 @@ a {
 .footer p{
     color: #919191;
 }
-#products {
+#cart {
     padding: 10px;
     margin: 0 0 10px 0;
     border: 1px solid;
     border-radius: 0 10px 10px 10px;
+    background-color: #eeeeee;
+    color: inherit;
+}
+#checkoutForm label{
+    display: inline-block;
+    width: 150px;
+}
+
+#errorMessage {
+    color: red;
+    font-size: 20px;
+}
+#products {
+    padding: 10px;
+    border: 1px solid;
     background-color: #7B7B7D;
     color: inherit;
 }
