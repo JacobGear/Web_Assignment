@@ -1,10 +1,31 @@
 let dateValidator = (function(){
     let pub = {};
     let bookingsArray = [];
+    let error = [];
 
-    function checkBooking(dateTime, requestedDogIds) {
+    function checkAllSelectedDogs(requestedDogIds, availableDogs, userPickupDT){
+        console.log("checkAllSelectedDogs()");
+        if(requestedDogIds.length === availableDogs.length && validateCheckOut()){
+            let booking = [];
+            let bookingObj = {};
+            bookingObj.dogID = requestedDogIds;
+            bookingObj.name = $("#userName").val();
+            bookingObj.pickup = {};
+            bookingObj.pickup.day = userPickupDT.getDay().toString();
+            bookingObj.pickup.month = userPickupDT.getMonth().toString();
+            bookingObj.pickup.year = userPickupDT.getFullYear().toString();
+            bookingObj.pickup.time = userPickupDT.getHours() + ":" + userPickupDT.getMinutes();
+            bookingObj.numHours = $("#numHours").val();
+            booking.push(bookingObj);
+            booking = JSON.stringify(booking);
+            window.localStorage.setItem("bookings", booking);
+            alert("Booking successful!");
+        }
+    }
+
+    function checkBooking(userPickupDT, requestedDogIds) {
         console.log("checkBooking()");
-        let selectedDateTime = new Date(dateTime);
+        let availableDogs = [];
 
         for(let booking of bookingsArray){
             let bookingId = booking.dogId;
@@ -14,35 +35,67 @@ let dateValidator = (function(){
             let bookingsEndTime = new Date(booking.pickup.year, booking.pickup.month, booking.pickup.day,
                 (bookingsStartTime.getHours()+numHours), booking.pickup.time.substring(3,5));
 
-            for(let dogId of requestedDogIds){
-                if(bookingId.includes(dogId)){
+            for(let dogIDs of requestedDogIds){
+                if(bookingId.includes(dogIDs)){
                     // Dog has been booked for this time
-                    if((selectedDateTime >= bookingsStartTime) && (selectedDateTime <= bookingsEndTime)) {
+                    if((userPickupDT >= bookingsStartTime) && (userPickupDT <= bookingsEndTime)) {
                         alert(booking.name + " has this dog booked from " + bookingsStartTime + " to " +
                             bookingsEndTime);
                     } else { // Nobody has dog booked
-
+                        if(!availableDogs.includes(dogIDs)){
+                            availableDogs.push(dogIDs);
+                        }
                     }
-                } else {
-                    console.log("false");
                 }
             }
 
-
         }
+        checkAllSelectedDogs(requestedDogIds, availableDogs, userPickupDT);
+
+    }
+
+    function checkEmptyDate(dateTime) {
+        if (!checkNotEmpty(dateTime)) {
+            error.push("You must enter a date and time!");
+        }
+    }
+
+    function checkNotEmpty(textValue) {
+        return textValue.trim().length > 0;
+    }
+
+    function checkUserName(userName) {
+        if (!checkNotEmpty(userName)) {
+            error.push("You must enter an User Name!");
+        }
+    }
+
+    function errorMessages() {
+        let errorID = $("#errorMessage");
+        let theMessage = "";
+        for(let message of error){
+            theMessage += "<li>" + message +  "</li>";
+            errorID.html(theMessage);
+        }
+    }
+
+    function errorFalse() {
+        let errorID = $("#errorMessage");
+        errorID.html("<li>" + "Successful!" +  "</li>");
     }
 
     function getRequestedDogs(){
         console.log("getRequestedDogs()");
-        let userDateTime = $("#dateTime");
-        let requestedDogIds = [];
+        let userDateTime = $("#dateTime").val();
+        let userPickupDT = new Date(userDateTime);
 
+        let requestedDogIds = [];
         let cart = window.localStorage.getItem("cart");
         cart = JSON.parse(cart);
         for(let item of cart){
             requestedDogIds.push(item.id);
         }
-        checkBooking(userDateTime.val(), requestedDogIds);
+        checkBooking(userPickupDT, requestedDogIds);
     }
 
     function getBookingsList(json){
@@ -70,6 +123,27 @@ let dateValidator = (function(){
                 getBookingsList(data);
             }
         });
+    }
+
+    function validateCheckOut(){
+        console.log("validateCheckOut()");
+        let userName = $("#userName").val();
+        checkUserName(userName);
+        let dateTime = $("#dateTime").val();
+        checkEmptyDate(dateTime);
+
+        if (error.length > 0) {
+            // Report the error messages
+            console.log(JSON.stringify(error));
+            errorMessages();
+            error = [];
+            return false;
+        } else {
+            errorFalse()
+            window.sessionStorage.removeItem("cart");
+            return true;
+        }
+
     }
 
     pub.setup = function() {
