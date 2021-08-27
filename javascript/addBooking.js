@@ -33,9 +33,11 @@ let addBooking = (function(){
             cartObj = JSON.parse(cart);
             if(duplicateCheck(item)) {
                 cartObj.push(item);
+                alert("Dog added to cart :)");
             }
         } else {
             cartObj.push(item);
+            alert("Dog added to cart :)");
         }
         let cartStr = JSON.stringify(cartObj);
         window.localStorage.setItem("cart", cartStr);
