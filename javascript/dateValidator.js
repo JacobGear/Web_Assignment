@@ -6,7 +6,6 @@ let dateValidator = (function(){
     function checkAllSelectedDogs(requestedDogIds, availableDogs, userPickupDT){
         console.log("checkAllSelectedDogs()");
         if(requestedDogIds.length === availableDogs.length && validateCheckOut()){
-            let booking = [];
             let bookingObj = {};
             bookingObj.dogID = requestedDogIds;
             bookingObj.name = $("#userName").val();
@@ -16,9 +15,7 @@ let dateValidator = (function(){
             bookingObj.pickup.year = userPickupDT.getFullYear().toString();
             bookingObj.pickup.time = userPickupDT.getHours() + ":" + userPickupDT.getMinutes();
             bookingObj.numHours = $("#numHours").val();
-            booking.push(bookingObj);
-            booking = JSON.stringify(booking);
-            window.localStorage.setItem("bookings", booking);
+            updateLocalStorage(bookingObj);
             alert("Booking successful!");
         }
     }
@@ -82,6 +79,7 @@ let dateValidator = (function(){
     function errorFalse() {
         let errorID = $("#errorMessage");
         errorID.html("<li>" + "Successful!" +  "</li>");
+        errorID.css("color", "blue");
     }
 
     function getRequestedDogs(){
@@ -123,6 +121,23 @@ let dateValidator = (function(){
                 getBookingsList(data);
             }
         });
+    }
+
+    function updateLocalStorage(bookingObj){
+        console.log("updateLocalStorage()");
+        let getBookings = window.localStorage.getItem("bookings");
+        if(getBookings === null){
+            let bookingsObj = {};
+            bookingsObj.booking = [];
+            bookingsObj.booking.push(bookingObj);
+            let bookings = JSON.stringify(bookingsObj);
+            window.localStorage.setItem("bookings", bookings);
+        } else {
+            let bookingsObj = JSON.parse(getBookings);
+            bookingsObj.booking.push(bookingObj);
+            let bookings = JSON.stringify(bookingsObj);
+            window.localStorage.setItem("bookings", bookings);
+        }
     }
 
     function validateCheckOut(){
