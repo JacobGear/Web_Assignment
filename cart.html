@@ -46,56 +46,19 @@
                 </p>
                 <p>
                     <label for="numHours">Number of hours:</label>
-                    <input type="text" name="numHours" id="numHours" required="">
+                    <select name="cars" id="numHours">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="4">5</option>
+                        <option value="4">6</option>
+                        <option value="4">7</option>
+                        <option value="4">8</option>
+                    </select>
                 </p>
             </fieldset>
 
-            <!-- Next section has credit card details -->
-            <fieldset>
-                <legend>Payment Details:</legend>
-                <p>
-                    <label for="cardType">Card type:</label>
-                    <select name="cardType" id="cardType">
-                        <option value="amex">American Express</option>
-                        <option value="mcard">Master Card</option>
-                        <option value="visa">Visa</option>
-                    </select>
-                </p>
-                <p>
-                    <label for="cardNumber">Card number:</label>
-                    <input type="text" name="cardNumber" id="cardNumber" maxlength="16" required="">
-                </p>
-                <p>
-                    <label for="cardMonth">Expiry date:</label>
-                    <select name="cardMonth" id="cardMonth">
-                        <option value="1">01</option>
-                        <option value="2">02</option>
-                        <option value="3">03</option>
-                        <option value="4">04</option>
-                        <option value="5">05</option>
-                        <option value="6">06</option>
-                        <option value="7">07</option>
-                        <option value="8">08</option>
-                        <option value="9">09</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select> / <select name="cardYear" id="cardYear">
-                    <option value="2014">2014</option>
-                    <option value="2015">2015</option>
-                    <option value="2016">2016</option>
-                    <option value="2017">2017</option>
-                    <option value="2018">2018</option>
-                    <option value="2019">2019</option>
-                    <option value="2020">2020</option>
-                    <option value="2021">2021</option>
-                </select>
-                </p>
-                <p>
-                    <label for="cardValidation">CVC:</label>
-                    <input type="text" class="short" maxlength="4" name="cardValidation" id="cardValidation" required="">
-                </p>
-            </fieldset>
             <button type="button" class='confirmBooking'>Confirm Booking</button>
         </form>
 
