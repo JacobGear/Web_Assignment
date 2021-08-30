@@ -72,16 +72,6 @@ let animalsImport = (function(){
         $("#products").html(html);
     }
 
-    function importAnimals2() {
-        let request = new XMLHttpRequest();
-        request.open('GET', "./json/animals.json");
-        request.onload = () => {
-            let result = JSON.parse(request.responseText);
-            jsonToHtml(result);
-        }
-        request.send();
-    }
-
     function importAnimals() {
         console.log("importAnimals()");
         $.ajax({
