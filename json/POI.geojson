@@ -7,31 +7,65 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "type": "campsite",
-        "name": "Car Rental Office"
+        "type": "office",
+        "name": "Dog hiring services office"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          170.5153065919876,
-          -45.90540437585189
+          170.5043684628508,
+          -45.87385962490865
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
+        "marker-color": "#ff0000",
         "marker-size": "medium",
         "marker-symbol": "triangle",
-        "name": "St Clair Beach",
-        "type": "landmark"
+        "name": "Ross Creek Forest Walk",
+        "type": "walk"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          170.49052566289902,
-          -45.911734850052895
+          170.49608932283726,
+          -45.8439137504517
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#ff0000",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Frasers Gully Bush Walk",
+        "type": "walk"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+            170.46947942711174,
+            -45.862598149271506
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#ff0000",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Smaills Beach",
+        "type": "walk"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+            170.55781345424205,
+            -45.903249404472675
         ]
       }
     },
@@ -41,14 +75,14 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "name": "Hot Water Pool",
-        "type": "landmark"
+        "type": "park",
+        "name": "Shand Park"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          170.48803120851517,
-          -45.913724171912456
+          170.42023005886898,
+          -45.89987129299666
         ]
       }
     },
@@ -58,14 +92,31 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "type": "restaurant",
-        "name": "Esplanade"
+        "type": "park",
+        "name": "Forrester Park"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          170.49030303955075,
-          -45.911675131971606
+          170.55554609135882,
+          -45.83578620539564
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "type": "park",
+        "name": "Bethune's Gully"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          170.55126228960447,
+          -45.83175514578885
         ]
       }
     }
