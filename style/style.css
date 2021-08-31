@@ -121,3 +121,11 @@ a {
     height: 500px;
     left: 32%;
 }
+.contact {
+    list-style-type: none;
+    display: flex;
+}
+.contact li {
+    text-align: center;
+    width: 32%;
+}
