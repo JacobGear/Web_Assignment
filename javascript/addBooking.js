@@ -26,12 +26,23 @@ let addBooking = (function(){
         return true;
     }
 
+    function moreThenThreeCheck(){
+        let cart = window.localStorage.getItem("cart");
+        cart = JSON.parse(cart);
+        if(cart.length >= 3) {
+            alert("Cannot book more than three dogs at a time");
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     function updateCookies(item){
         let cart = window.localStorage.getItem("cart");
         let cartObj = [];
         if(cart !== null){
             cartObj = JSON.parse(cart);
-            if(duplicateCheck(item)) {
+            if(duplicateCheck(item) && !moreThenThreeCheck()) {
                 cartObj.push(item);
                 alert("Dog added to cart :)");
             }
