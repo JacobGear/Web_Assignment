@@ -14,10 +14,10 @@ let Reviews = (function() {
         let html = "";
         for(let review of reviews){
             html += "<div class='review'>";
-            html += "<p>" + review.title + "</p>";
-            html += "<p>" + review.author + "</p>";
-            html += "<p>" + review.reviewcontent + "</p>";
-            html += "</div>" + "</br>";
+            html += "<p class='reviewTitle'>" + review.title + "</p>";
+            html += "<p class='reviewAuthor'>" + review.author + "</p><br>";
+            html += "<p class='reviewContent'>" + review.reviewcontent + "</p>";
+            html += "</div>" + "<br><hr><br>";
         }
         $(".reviews").html(html);
     }

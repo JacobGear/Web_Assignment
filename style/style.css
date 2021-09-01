@@ -3,6 +3,26 @@
     padding: 0;
     font-family: sans-serif;
 }
+footer {
+    position: fixed;
+    background: #42455a;
+    padding: 10px;
+    margin: 0 0 0 0;
+    border: 1px solid;
+    border-radius: 0px 0px 0px 0px;
+    color: white;
+    bottom: 0;
+    width: 100%;
+}
+footer p{
+    color: #919191;
+}
+h1 {
+    color: #15f4ee;
+    text-align: center;
+    font-size: 400%;
+    font-family: Papyrus, serif;
+}
 html {
     background: #42455a;
 }
@@ -53,7 +73,7 @@ a {
     height: 70%;
     top: 25%;
     left: 130px;
-    position: absolute;
+    position: fixed;
     color: white;
 }
 .app-text {
@@ -76,22 +96,28 @@ a {
 .app-picture {
     width: 50%;
     float: right;
+    position: relative;
 }
 .app-picture img {
     width: 100%;
     margin-top: -20px;
     padding-left: 50px;
 }
-.footer {
-    background: #42455a;
-    padding: 10px;
-    margin: 0 0 0 0;
+.reviews {
     border: 1px solid;
-    border-radius: 0px 0px 0px 0px;
-    color: white;
+    border-radius: 10px 10px 10px 10px;
+    background-color: #eeeeee;
+    width: 50%;
+    height: fit-content;
+    color: #222222;
 }
-.footer p{
-    color: #919191;
+.reviewTitle {
+    font-weight: bold;
+    color: #222222;
+    font-size: 20px;
+}
+.reviewAuthor {
+    color: #3388ff;
 }
 #cart {
     padding: 10px;
