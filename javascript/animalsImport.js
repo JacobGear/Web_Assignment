@@ -7,15 +7,15 @@ let animalsImport = (function(){
         return html;
     }
 
-    function addImage(dog, dogKey, html) {
+    function addImage(dog, html) {
         console.log("addImage()");
-        if(dog[dogKey] === "DW-001") {
+        if(dog["dogId"] === "DW-001") {
             html += "<img class='images' src=\"./images/small.jpg\" alt=\"Small\">";
-        } else if(dog[dogKey] === "DW-002") {
+        } else if(dog["dogId"] === "DW-002") {
             html += "<img class='images' src=\"./images/medium.jpg\" alt=\"Medium\">";
-        } else if(dog[dogKey] === "DW-003") {
+        } else if(dog["dogId"] === "DW-003") {
             html += "<img class='images' src=\"./images/large.jpg\" alt=\"Large\">";
-        } else if(dog[dogKey] === "DW-004") {
+        } else if(dog["dogId"] === "DW-004") {
             html += "<img class='images' src=\"./images/huge.jpg\" alt=\"Huge\">";
         }
         return html;
@@ -38,15 +38,15 @@ let animalsImport = (function(){
             dogField = "Price Per Hour";
         }
         if(dogKey !== "pricePerHour" && dogKey !== "dogId") {
-            html += "<p>" + "<strong>" + dogField + ": " + "</strong>" + dog[dogKey] + "</p>";
+            html += "<li>" + "<strong>" + dogField + ": " + "</strong>" + dog[dogKey] + "</li>";
         }
         if(dogKey === "pricePerHour") {
-            html +=  "<p>" + "<strong>" + dogField + ": " + "</strong>" + "$" +
-                "<object class='price'>" + dog[dogKey] + "</object>" + "</p>";
+            html += "<li>" + "<strong>" + dogField + ": " + "</strong>" + "$" +
+                "<object class='price'>" + dog[dogKey] + "</object>" + "</li>";
         }
         if(dogKey === "dogId") {
-            html += "<p>" + "<strong>" + dogField + ": " + "</strong>" +
-                "<object class='dogId'>" + dog[dogKey] + "</object>" + "</p>";
+            html += "<li>" + "<strong>" + dogField + ": " + "</strong>" +
+                "<object class='dogId'>" + dog[dogKey] + "</object>" + "</li>";
         }
         return html;
     }
@@ -59,14 +59,16 @@ let animalsImport = (function(){
         let animalKeys = Object.keys(animals);
         let dogs = animals[animalKeys];
         dogs.forEach((dog) => {
-            html += "<div class = 'dog'>";
+            html += "<section class = 'dog'>";
+            html = addImage(dog, html);
+            html += "<ul class='dogText'>";
             let dogKeys = Object.keys(dog);
             dogKeys.forEach((dogKey) => {
-                html = addImage(dog, dogKey, html);
                 html = htmlFormatting(dog, dogKey, html);
             })
+            html += "</ul>";
             html = addDropList(html);
-            html += "</div>";
+            html += "</section>";
             html += "<hr />";
         })
         $("#products").html(html);

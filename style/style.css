@@ -34,6 +34,30 @@ a {
     width: 100%;
     height: 100%;
 }
+.dog {
+    clear: both;
+    margin: 15px 0;
+    min-height: 300px;
+    font-size: 25px;
+}
+.dog img {
+    margin: 0 10px;
+}
+.dog:nth-of-type(odd) img {
+    float: left;
+}
+.dog:nth-of-type(even) img {
+    float: left;
+}
+.dogText {
+    list-style-type: none;
+    margin-left: 100px;
+}
+.makeBooking {
+    width: 100px;
+    height: 30px;
+    float: end;
+}
 .menu ul {
     display: inline-flex;
     margin: 50px;
@@ -139,8 +163,12 @@ a {
 #products {
     padding: 10px;
     border: 1px solid;
-    background-color: #7B7B7D;
+    background-color: #eeeeee;
     color: inherit;
+    width: 75%;
+    height: 100vh;
+    margin-left: 11%;
+    border-radius: 10px 10px 10px 10px;
 }
 #map {
     width: 700px;
