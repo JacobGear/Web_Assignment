@@ -6,10 +6,12 @@ let addBooking = (function(){
         let parentSection = $(this).parent();
         let dogId = $(parentSection).find(".dogId").text();
         let dogPrice = $(parentSection).find(".price").text();
+        let dogName = $(parentSection).find(".dogName").text();
 
         let item = {};
         item.price = dogPrice;
         item.id = dogId;
+        item.name = dogName;
 
         updateCookies(item);
     }

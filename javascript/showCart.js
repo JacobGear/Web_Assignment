@@ -1,13 +1,13 @@
 let showCart = (function(){
     let pub = {};
 
-    function clearCart(){
+    function clearCart() {
         console.log("clearCart()");
         window.localStorage.removeItem("cart");
         document.location.reload(true);
     }
 
-    function getCart(){
+    function getCart() {
         console.log("getCart()");
         let cart = window.localStorage.getItem("cart");
         if(cart !== null){
@@ -27,8 +27,8 @@ let showCart = (function(){
             cartList.html("<p> No items in cart </p>");
         } else {
             for(let item of cart){
-                listString += "<li>" + item.id + " " + "$" + item.price + " Per Hour";
-                cartList.html(listString);
+                listString += "<li>" + "<strong>" + item.name + "</strong>" + " "
+                    + "$" + item.price + "/hour";
             }
             listString += "</li>";
             cartList.html(listString);
