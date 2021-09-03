@@ -23,30 +23,15 @@ let animalsImport = (function(){
 
     function htmlFormatting(dog, dogKey, html) {
         console.log("htmlFormatting()");
-        let dogField;
-        if(dogKey === "dogName") {
-            dogField = "Dog's Name";
-        } else if(dogKey === "dogId") {
-            dogField = "Dog ID";
-        } else if(dogKey === "dogType") {
-            dogField = "Dog Type";
-        } else if(dogKey === "dogSize") {
-            dogField = "Dog Size";
-        } else if(dogKey === "description") {
-            dogField = "Description";
-        } else if(dogKey === "pricePerHour") {
-            dogField = "Price Per Hour";
-        }
-        if(dogKey !== "pricePerHour" && dogKey !== "dogId") {
-            html += "<li>" + "<strong>" + dogField + ": " + "</strong>" + dog[dogKey] + "</li>";
-        }
         if(dogKey === "pricePerHour") {
-            html += "<li>" + "<strong>" + dogField + ": " + "</strong>" + "$" +
-                "<object class='price'>" + dog[dogKey] + "</object>" + "</li>";
-        }
-        if(dogKey === "dogId") {
-            html += "<li>" + "<strong>" + dogField + ": " + "</strong>" +
-                "<object class='dogId'>" + dog[dogKey] + "</object>" + "</li>";
+            html += "<li>" + "$" + "<object class='price'>" + dog[dogKey] + "</object>" +
+                "/hour" + "</li>";
+        } else if(dogKey === "dogId") {
+            html += "<li>" + "<object class='dogId'>" + dog[dogKey] + "</object>" + "</li>";
+        } else if(dogKey === "dogName") {
+            html += "<li>" + "<object class='dogName'>" + dog[dogKey] + "</object>" + "</li>";
+        } else {
+            html += "<li>" + dog[dogKey] + "</li>";
         }
         return html;
     }
