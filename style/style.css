@@ -23,6 +23,11 @@ h1 {
     font-size: 400%;
     font-family: Papyrus, serif;
 }
+h2 {
+    color: #15f4ee;
+    font-size: 200%;
+    font-family: Papyrus, serif;
+}
 html {
     background: #42455a;
 }
@@ -52,6 +57,12 @@ a {
 .dogText {
     list-style-type: none;
     margin-left: 100px;
+}
+.dogId {
+    font-size: 10px;
+}
+.dogName {
+    font-weight: bold;
 }
 .makeBooking {
     width: 100px;
@@ -145,10 +156,11 @@ a {
 }
 #cart {
     padding: 10px;
-    margin: 0 0 10px 0;
     border: 1px solid;
-    border-radius: 0 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
     background-color: #eeeeee;
+    margin-left: 11%;
+    width: 75%;
     color: inherit;
 }
 #checkoutForm label{
@@ -166,7 +178,17 @@ a {
     background-color: #eeeeee;
     color: inherit;
     width: 75%;
-    height: 100vh;
+    height: fit-content;
+    margin-left: 11%;
+    border-radius: 10px 10px 10px 10px;
+}
+.adminBookings {
+    padding: 10px;
+    border: 1px solid;
+    background-color: #eeeeee;
+    color: inherit;
+    width: 75%;
+    height: fit-content;
     margin-left: 11%;
     border-radius: 10px 10px 10px 10px;
 }
@@ -182,4 +204,14 @@ a {
 .contact li {
     text-align: center;
     width: 32%;
+}
+.contact h3 {
+    color: #19dafa
+}
+.contact p {
+    color: white;
+}
+.orderNumber {
+    font-size: 200%;
+    font-family: Papyrus, serif;
 }
