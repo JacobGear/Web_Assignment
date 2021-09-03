@@ -87,6 +87,16 @@ a {
 .active {
     color: #19dafa !important;
 }
+.showBookings {
+    width: 100px;
+    height: 30px;
+    float: end;
+}
+.showTheDogs {
+    width: 100px;
+    height: 30px;
+    text-align: center;
+}
 .sign {
     top: 40px;
     right: 80px;
