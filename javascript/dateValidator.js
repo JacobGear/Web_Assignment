@@ -17,6 +17,8 @@ let dateValidator = (function(){
             bookingObj.numHours = $("#numHours").val();
             updateLocalStorage(bookingObj);
             alert("Booking successful!");
+        } else {
+            alert("Error try again");
         }
     }
 
@@ -42,6 +44,10 @@ let dateValidator = (function(){
                         if(!availableDogs.includes(dogIDs)){
                             availableDogs.push(dogIDs);
                         }
+                    }
+                } else { // Nobody has dog booked
+                    if(!availableDogs.includes(dogIDs)){
+                        availableDogs.push(dogIDs);
                     }
                 }
             }
@@ -155,7 +161,7 @@ let dateValidator = (function(){
             return false;
         } else {
             errorFalse()
-            window.sessionStorage.removeItem("cart");
+            window.localStorage.removeItem("cart");
             return true;
         }
 
