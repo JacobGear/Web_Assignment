@@ -9,6 +9,18 @@ let showBookings = (function() {
             //(bookingsStartTime.getHours()+numHours), booking.pickup.time.substring(3,5));
         return bookingsStartTime.toString() + " ";
     }
+
+    function htmlFormatting(bookingObj, html) {
+        html += "<div class='booking'>";
+        html += "<strong>Requested dogs: </strong>" + bookingObj.dogId + "<br>";
+        html += "<strong>Username: </strong>" + bookingObj.name + "<br>";
+        html += "<strong>Pickup time: </strong>" + getDateTime(bookingObj.pickup) + "<br>";
+        html += "<strong>Number of hours: </strong>" + bookingObj.numHours;
+        html += "</div>";
+        html += "<hr />";
+        return html;
+    }
+
     /**
      * Function to parseReview by getting the data from the json file and coverting it to html.
      * @param json
@@ -19,13 +31,11 @@ let showBookings = (function() {
 
         let keys = Object.keys(json);
         let bookings = json[keys]; // bookings object
+        let orderNumber = 1;
         for(let bookingObj of bookings.booking){
-            html += "<div class='booking'>";
-            html += bookingObj.dogId + " ";
-            html += bookingObj.name + " ";
-            html += getDateTime(bookingObj.pickup);
-            html += bookingObj.numHours + " ";
-            html += "</div>";
+            html += "<object class='orderNumber'> Order number: " + orderNumber + "</object>";
+            html = htmlFormatting(bookingObj, html)
+            orderNumber++;
         }
         $(".adminBookings").html(html);
     }
