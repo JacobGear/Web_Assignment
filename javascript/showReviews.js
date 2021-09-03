@@ -1,12 +1,10 @@
 let Reviews = (function() {
     let pub = {};
 
-    function failMessage(target) {
-        target.append("No Reviews!");
-    }
     /**
-     * Function to parseReview by getting the data from the json file and coverting it to html.
-     * @param data
+     * Function to parseReview by getting the data from the json file and converting it
+     * to html.
+     * @param reviews
      */
     function parseReviews(reviews) {
         console.log("parseReviews()");
@@ -22,6 +20,10 @@ let Reviews = (function() {
         $(".reviews").html(html);
     }
 
+    /**
+     * Ajax method for retrieving the json file and on success sends the data to
+     * parseReviews.
+     */
     function showReviews() {
         console.log("showReviews()");
         $.ajax({
@@ -36,6 +38,9 @@ let Reviews = (function() {
         });
     }
 
+    /**
+     * Setup method.
+     */
     pub.setup = function() {
         showReviews();
     }

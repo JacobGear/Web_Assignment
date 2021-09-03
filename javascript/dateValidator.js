@@ -3,6 +3,13 @@ let dateValidator = (function(){
     let bookingsArray = [];
     let error = [];
 
+    /**
+     * Checks to see if the checkout form was validated and saves the booking
+     * object to local storage if the checkout passed validation.
+     * @param requestedDogIds
+     * @param availableDogs
+     * @param userPickupDT
+     */
     function checkAllSelectedDogs(requestedDogIds, availableDogs, userPickupDT){
         console.log("checkAllSelectedDogs()");
         if(requestedDogIds.length === availableDogs.length && validateCheckOut()){
@@ -22,6 +29,12 @@ let dateValidator = (function(){
         }
     }
 
+    /**
+     * Gets the booking time from the json files and if the time is not valid,
+     * give a alert.
+     * @param userPickupDT
+     * @param requestedDogIds
+     */
     function checkBooking(userPickupDT, requestedDogIds) {
         console.log("checkBooking()");
         let availableDogs = [];
@@ -54,25 +67,40 @@ let dateValidator = (function(){
 
         }
         checkAllSelectedDogs(requestedDogIds, availableDogs, userPickupDT);
-
     }
 
+    /**
+     * Checks that the date field is not empty.
+     * @param dateTime
+     */
     function checkEmptyDate(dateTime) {
         if (!checkNotEmpty(dateTime)) {
             error.push("You must enter a date and time!");
         }
     }
 
+    /**
+     * Checks that a field is not empty.
+     * @param textValue
+     * @returns {boolean}
+     */
     function checkNotEmpty(textValue) {
         return textValue.trim().length > 0;
     }
 
+    /**
+     * Checks that the username field is not empty.
+     * @param userName
+     */
     function checkUserName(userName) {
         if (!checkNotEmpty(userName)) {
             error.push("You must enter an User Name!");
         }
     }
 
+    /**
+     * Displays error messages.
+     */
     function errorMessages() {
         let errorID = $("#errorMessage");
         let theMessage = "";
@@ -82,12 +110,18 @@ let dateValidator = (function(){
         }
     }
 
+    /**
+     * Displays success message in blue;
+     */
     function errorFalse() {
         let errorID = $("#errorMessage");
         errorID.html("<li>" + "Successful!" +  "</li>");
         errorID.css("color", "blue");
     }
 
+    /**
+     * Gets user requested dogs from cart in local storage.
+     */
     function getRequestedDogs(){
         console.log("getRequestedDogs()");
         let userDateTime = $("#dateTime").val();
@@ -102,6 +136,10 @@ let dateValidator = (function(){
         checkBooking(userPickupDT, requestedDogIds);
     }
 
+    /**
+     * Gets the bookings from the json file and puts them into a list.
+     * @param json
+     */
     function getBookingsList(json){
         console.log("getBookingsList()");
         let bookingsList = [];
@@ -115,6 +153,9 @@ let dateValidator = (function(){
         bookingsArray = bookingsList;
     }
 
+    /**
+     * Uses ajax method to import bookings json file.
+     */
     function importBookings() {
         console.log("importBookings()");
         $.ajax({
@@ -129,6 +170,10 @@ let dateValidator = (function(){
         });
     }
 
+    /**
+     * Updates local storage if the booking was successful.
+     * @param bookingObj
+     */
     function updateLocalStorage(bookingObj){
         console.log("updateLocalStorage()");
         let getBookings = window.localStorage.getItem("bookings");
@@ -146,6 +191,11 @@ let dateValidator = (function(){
         }
     }
 
+    /**
+     * Validates checkout, if validated a successful message is displayed
+     * else a error message is shown.
+     * @returns {boolean}
+     */
     function validateCheckOut(){
         console.log("validateCheckOut()");
         let userName = $("#userName").val();
@@ -167,6 +217,9 @@ let dateValidator = (function(){
 
     }
 
+    /**
+     * Setup method.
+     */
     pub.setup = function() {
         importBookings();
         $(".confirmBooking").click(getRequestedDogs);

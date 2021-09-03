@@ -6,6 +6,9 @@ let Map = (function () {
     let walks = L.layerGroup();
     let parks = L.layerGroup();
 
+    /**
+     * Inserts the geoJson and on success sends the data to markers.
+     */
     function insertGeo() {
         console.log("insertGeo()");
         $.ajax({
@@ -18,6 +21,9 @@ let Map = (function () {
         });
     }
 
+    /**
+     * Gets the map from leaflet and adds it to the map variable to be displayed.
+     */
     function mapSetup(){
         console.log("mapSetup()");
         map = L.map('map').setView([-45.875, 170.500], 15);
@@ -29,9 +35,12 @@ let Map = (function () {
             }).addTo(map);
     }
 
+    /**
+     * On each feature of bind a popup and add it to its correct layer group.
+     * @param markerLocations
+     */
     function markers(markerLocations){
         console.log("markers()");
-        //L.geoJSON(markerLocations).addTo(map);
         L.geoJson(markerLocations, {
             onEachFeature: function (feature, layer) {
                 let content = "Name: " + feature.properties.name + "<br>";
@@ -50,6 +59,9 @@ let Map = (function () {
         office.addTo(map);
     }
 
+    /**
+     * Function for show/hiding walks and parks if box is checked or not.
+     */
     function showHide() {
         console.log("showHide()");
         if($(this).attr("id") === "showParks") {
@@ -62,6 +74,9 @@ let Map = (function () {
 
     }
 
+    /**
+     * Setup function.
+     */
     pub.setup = function(){
         mapSetup()
         insertGeo()

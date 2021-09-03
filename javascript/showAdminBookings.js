@@ -1,15 +1,24 @@
-let showBookings = (function() {
+let showAdminBookings = (function() {
     let pub = {};
 
+    /**
+     * Gets the data and time from the json object converts it to a date,
+     * then returns it in string form.
+     * @param pickup
+     * @returns {string}
+     */
     function getDateTime(pickup) {
         let bookingsStartTime = new Date(pickup.year, pickup.month, pickup.day,
             pickup.time.substring(0,2), pickup.time.substring(3,5));
-        //let numHours = parseInt(booking.numHours);
-        //let bookingsEndTime = new Date(booking.pickup.year, booking.pickup.month, booking.pickup.day,
-            //(bookingsStartTime.getHours()+numHours), booking.pickup.time.substring(3,5));
         return bookingsStartTime.toString() + " ";
     }
 
+    /**
+     * Takes in a json object and converts it to html then returns it.
+     * @param bookingObj
+     * @param html
+     * @returns {*}
+     */
     function htmlFormatting(bookingObj, html) {
         html += "<div class='booking'>";
         html += "<strong>Requested dogs: </strong>" + bookingObj.dogId + "<br>";
@@ -22,7 +31,8 @@ let showBookings = (function() {
     }
 
     /**
-     * Function to parseReview by getting the data from the json file and coverting it to html.
+     * Function to parseReview by getting the data from the json file and converting
+     * it to html then displaying it.
      * @param json
      */
     function parseBookings(json) {
@@ -40,8 +50,12 @@ let showBookings = (function() {
         $(".adminBookings").html(html);
     }
 
+    /**
+     * Ajax function that gets a json file, on success sends the data
+     * to parseBookings.
+     */
     function showBookings() {
-        console.log("showBookings()");
+        console.log("showAdminBookings()");
         $.ajax({
             type: "GET",
             async: false,
@@ -54,6 +68,9 @@ let showBookings = (function() {
         });
     }
 
+    /**
+     * Setup function.
+     */
     pub.setup = function() {
         showBookings();
     }
@@ -61,4 +78,4 @@ let showBookings = (function() {
     return pub;
 }());
 
-$(document).ready(showBookings.setup);
+$(document).ready(showAdminBookings.setup);

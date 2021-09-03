@@ -1,12 +1,24 @@
 let animalsImport = (function(){
     let pub = {};
 
-    function addDropList(html){
+    /**
+     * Adds buttons for making and showing bookings.
+     * @param html
+     * @returns {*}
+     */
+    function addButtons(html){
         console.log("addDropList()");
         html += "<button type=\"button\" class='makeBooking'>Make Booking</button>";
+        html += "<button type=\"button\" class='showBookings'>Show Bookings</button>";
         return html;
     }
 
+    /**
+     * Adds image matched with id's.
+     * @param dog
+     * @param html
+     * @returns {*}
+     */
     function addImage(dog, html) {
         console.log("addImage()");
         if(dog["dogId"] === "DW-001") {
@@ -21,6 +33,13 @@ let animalsImport = (function(){
         return html;
     }
 
+    /**
+     * Takes json data converts it to html then returns it.
+     * @param dog
+     * @param dogKey
+     * @param html
+     * @returns {*}
+     */
     function htmlFormatting(dog, dogKey, html) {
         console.log("htmlFormatting()");
         if(dogKey === "pricePerHour") {
@@ -36,6 +55,11 @@ let animalsImport = (function(){
         return html;
     }
 
+    /**
+     * Takes json data converts it to html then displays the html in
+     * the products.html page.
+     * @param json
+     */
     function jsonToHtml(json) {
         console.log("jsonToHTml()");
         let html = "";
@@ -52,13 +76,16 @@ let animalsImport = (function(){
                 html = htmlFormatting(dog, dogKey, html);
             })
             html += "</ul>";
-            html = addDropList(html);
+            html = addButtons(html);
             html += "</section>";
             html += "<hr />";
         })
         $("#products").html(html);
     }
 
+    /**
+     * ajax method to import the json animals.
+     */
     function importAnimals() {
         console.log("importAnimals()");
         $.ajax({
@@ -73,7 +100,9 @@ let animalsImport = (function(){
         });
     }
 
-
+    /**
+     * Setup method.
+     */
     pub.setup = function() {
         importAnimals();
     }

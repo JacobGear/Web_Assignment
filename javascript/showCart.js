@@ -1,12 +1,20 @@
 let showCart = (function(){
     let pub = {};
 
+    /**
+     * Clears cart in local storage then loads the document.
+     */
     function clearCart() {
         console.log("clearCart()");
         window.localStorage.removeItem("cart");
         document.location.reload(true);
     }
 
+    /**
+     * returns the cart from local storage if the cart is not empty,
+     * else returns null.
+     * @returns {null|any}
+     */
     function getCart() {
         console.log("getCart()");
         let cart = window.localStorage.getItem("cart");
@@ -17,6 +25,10 @@ let showCart = (function(){
         }
     }
 
+    /**
+     * Gets the cart from local storage and converts the obj to html,
+     * then displays it.
+     */
     function showCart() {
         console.log("showCart()");
         let cart = getCart();
@@ -45,7 +57,9 @@ let showCart = (function(){
         $("#clearCart").click(clearCart)
     }
 
-
+    /**
+     * Setup method.
+     */
     pub.setup = function() {
         showCart();
     }

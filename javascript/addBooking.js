@@ -1,6 +1,10 @@
 let addBooking = (function(){
     let pub = {};
 
+    /**
+     * Finds the dog's ID, price, and name in html and
+     * uses that information to make an object.
+     */
     function addToBookings(){
         console.log("addToBookings()");
         let parentSection = $(this).parent();
@@ -16,6 +20,12 @@ let addBooking = (function(){
         updateCookies(item);
     }
 
+    /**
+     * Takes a booking item and returns true if the item is already in
+     * local storage, else returns false.
+     * @param item
+     * @returns {boolean}
+     */
     function duplicateCheck(item){
         let cart = window.localStorage.getItem("cart");
         cart = JSON.parse(cart);
@@ -28,6 +38,11 @@ let addBooking = (function(){
         return true;
     }
 
+    /**
+     * Returns true if there is more than three items in the cart
+     * else returns false.
+     * @returns {boolean}
+     */
     function moreThenThreeCheck(){
         let cart = window.localStorage.getItem("cart");
         cart = JSON.parse(cart);
@@ -39,6 +54,10 @@ let addBooking = (function(){
         }
     }
 
+    /**
+     * Updates local storage each time a item is added to the cart.
+     * @param item
+     */
     function updateCookies(item){
         let cart = window.localStorage.getItem("cart");
         let cartObj = [];
@@ -56,6 +75,9 @@ let addBooking = (function(){
         window.localStorage.setItem("cart", cartStr);
     }
 
+    /**
+     * Setup method.
+     */
     pub.setup = function() {
         $(".makeBooking").click(addToBookings);
     }
