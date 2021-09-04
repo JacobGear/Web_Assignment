@@ -1,4 +1,5 @@
 let Reviews = (function() {
+    'use strict';
     let pub = {};
 
     /**
@@ -43,7 +44,7 @@ let Reviews = (function() {
      */
     pub.setup = function() {
         showReviews();
-    }
+    };
 
     return pub;
 }());

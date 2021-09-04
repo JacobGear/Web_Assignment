@@ -1,4 +1,5 @@
 let addBooking = (function(){
+    'use strict';
     let pub = {};
 
     /**
@@ -7,7 +8,9 @@ let addBooking = (function(){
      */
     function addToBookings(){
         console.log("addToBookings()");
+        /* jshint -W040 */
         let parentSection = $(this).parent();
+        /* jshint +W040 */
         let dogId = $(parentSection).find(".dogId").text();
         let dogPrice = $(parentSection).find(".price").text();
         let dogName = $(parentSection).find(".dogName").text();
@@ -80,7 +83,7 @@ let addBooking = (function(){
      */
     pub.setup = function() {
         $(".makeBooking").click(addToBookings);
-    }
+    };
 
 
     return pub;

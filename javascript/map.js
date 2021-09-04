@@ -1,5 +1,5 @@
-let Map = (function () {
-
+let map = (function () {
+    'use strict';
     let pub = {};
     let map;
     let office = L.layerGroup();
@@ -55,7 +55,7 @@ let Map = (function () {
                     parks.addLayer(layer);
                 }
             }
-        })
+        });
         office.addTo(map);
     }
 
@@ -64,13 +64,15 @@ let Map = (function () {
      */
     function showHide() {
         console.log("showHide()");
+        /* jshint -W040 */
         if($(this).attr("id") === "showParks") {
-            if($(this).prop('checked')) parks.addTo(map)
+            if($(this).prop('checked')) parks.addTo(map);
             else parks.remove();
         } else if($(this).attr("id") === "showWalks") {
             if($(this).prop('checked')) walks.addTo(map);
             else walks.remove();
         }
+        /* jshint +W040 */
 
     }
 
@@ -78,13 +80,13 @@ let Map = (function () {
      * Setup function.
      */
     pub.setup = function(){
-        mapSetup()
-        insertGeo()
+        mapSetup();
+        insertGeo();
         $("#showWalks").click(showHide);
         $("#showParks").click(showHide);
-    }
+    };
 
     return pub;
 }());
 
-$(document).ready(Map.setup);
+$(document).ready(map.setup);

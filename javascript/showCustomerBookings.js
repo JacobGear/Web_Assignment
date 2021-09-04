@@ -1,4 +1,5 @@
 let showCustomerBookings = (function() {
+    'use strict';
     let pub = {};
 
     /**
@@ -81,7 +82,7 @@ let showCustomerBookings = (function() {
      */
     pub.setup = function() {
         $(".showBookings").click(showBookings);
-    }
+    };
 
     return pub;
 }());

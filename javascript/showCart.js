@@ -1,4 +1,5 @@
 let showCart = (function(){
+    'use strict';
     let pub = {};
 
     /**
@@ -39,8 +40,8 @@ let showCart = (function(){
             cartList.html("<p> No items in cart </p>");
         } else {
             for(let item of cart){
-                listString += "<li>" + "<strong>" + item.name + "</strong>" + " "
-                    + "$" + item.price + "/hour";
+                listString += "<li>" + "<strong>" + item.name + "</strong>" + " " +
+                    "$" + item.price + "/hour";
             }
             listString += "</li>";
             cartList.html(listString);
@@ -54,7 +55,7 @@ let showCart = (function(){
         }
         totalHTML.html("$" + total.toString() + " Per Hour");
 
-        $("#clearCart").click(clearCart)
+        $("#clearCart").click(clearCart);
     }
 
     /**
@@ -62,7 +63,7 @@ let showCart = (function(){
      */
     pub.setup = function() {
         showCart();
-    }
+    };
 
 
     return pub;

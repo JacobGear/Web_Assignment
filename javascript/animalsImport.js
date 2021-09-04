@@ -1,4 +1,5 @@
 let animalsImport = (function(){
+    'use strict';
     let pub = {};
 
     /**
@@ -21,13 +22,13 @@ let animalsImport = (function(){
      */
     function addImage(dog, html) {
         console.log("addImage()");
-        if(dog["dogId"] === "DW-001") {
+        if(dog.dogId === "DW-001") {
             html += "<img class='images' src=\"./images/small.jpg\" alt=\"Small\">";
-        } else if(dog["dogId"] === "DW-002") {
+        } else if(dog.dogId === "DW-002") {
             html += "<img class='images' src=\"./images/medium.jpg\" alt=\"Medium\">";
-        } else if(dog["dogId"] === "DW-003") {
+        } else if(dog.dogId === "DW-003") {
             html += "<img class='images' src=\"./images/large.jpg\" alt=\"Large\">";
-        } else if(dog["dogId"] === "DW-004") {
+        } else if(dog.dogId === "DW-004") {
             html += "<img class='images' src=\"./images/huge.jpg\" alt=\"Huge\">";
         }
         return html;
@@ -74,12 +75,12 @@ let animalsImport = (function(){
             let dogKeys = Object.keys(dog);
             dogKeys.forEach((dogKey) => {
                 html = htmlFormatting(dog, dogKey, html);
-            })
+            });
             html += "</ul>";
             html = addButtons(html);
             html += "</section>";
             html += "<hr />";
-        })
+        });
         $("#products").html(html);
     }
 
@@ -105,7 +106,7 @@ let animalsImport = (function(){
      */
     pub.setup = function() {
         importAnimals();
-    }
+    };
 
     return pub;
 }());

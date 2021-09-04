@@ -1,4 +1,5 @@
 let dateValidator = (function(){
+    'use strict';
     let pub = {};
     let bookingsArray = [];
     let error = [];
@@ -210,7 +211,7 @@ let dateValidator = (function(){
             error = [];
             return false;
         } else {
-            errorFalse()
+            errorFalse();
             window.localStorage.removeItem("cart");
             return true;
         }
@@ -223,7 +224,7 @@ let dateValidator = (function(){
     pub.setup = function() {
         importBookings();
         $(".confirmBooking").click(getRequestedDogs);
-    }
+    };
 
 
     return pub;

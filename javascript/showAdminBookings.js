@@ -1,4 +1,5 @@
 let showAdminBookings = (function() {
+    'use strict';
     let pub = {};
 
     /**
@@ -44,7 +45,7 @@ let showAdminBookings = (function() {
         let orderNumber = 1;
         for(let bookingObj of bookings.booking){
             html += "<object class='orderNumber'> Order number: " + orderNumber + "</object>";
-            html = htmlFormatting(bookingObj, html)
+            html = htmlFormatting(bookingObj, html);
             orderNumber++;
         }
         $(".adminBookings").html(html);
@@ -73,7 +74,7 @@ let showAdminBookings = (function() {
      */
     pub.setup = function() {
         showBookings();
-    }
+    };
 
     return pub;
 }());
