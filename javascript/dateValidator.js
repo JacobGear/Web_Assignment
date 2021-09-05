@@ -50,7 +50,7 @@ let dateValidator = (function(){
                 if(bookingId.includes(dogIDs)){
                     // Dog has been booked for this time
                     if((userPickupDT >= bookingsStartTime) && (userPickupDT <= bookingsEndTime)) {
-                        alert(booking.name + " has this dog booked from " + bookingsStartTime + " to " +
+                        error.push(booking.name + " has this dog booked from " + bookingsStartTime + " to " +
                             bookingsEndTime);
                     } else { // Nobody has dog booked
                         if(!availableDogs.includes(dogIDs)){
