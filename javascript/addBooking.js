@@ -7,7 +7,6 @@ let addBooking = (function(){
      * uses that information to make an object.
      */
     function addToBookings(){
-        console.log("addToBookings()");
         /* jshint -W040 */
         let parentSection = $(this).parent();
         /* jshint +W040 */

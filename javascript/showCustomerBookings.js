@@ -15,7 +15,6 @@ let showCustomerBookings = (function() {
      * @returns {string} Booking start time string.
      */
     function getDateTime(pickup) {
-        console.log("getDateTime()");
         let bookingsStartTime = new Date(pickup.year, pickup.month, pickup.day,
             pickup.time.substring(0,2), pickup.time.substring(3,5));
         //let numHours = parseInt(booking.numHours);
@@ -31,7 +30,6 @@ let showCustomerBookings = (function() {
      * @returns {*}
      */
     function htmlFormatting(bookingObj, html) {
-        console.log("htmlFormatting()");
         html += "<div class='booking'>";
         html += "<strong>Requested dogs: </strong>" + bookingObj.dogId + "<br>";
         html += "<strong>Username: </strong>" + bookingObj.name + "<br>";
@@ -47,7 +45,6 @@ let showCustomerBookings = (function() {
      * @param json
      */
     function parseBookings(json) {
-        console.log("parseBookings()");
         let html = "";
 
         let keys = Object.keys(json);
@@ -63,7 +60,6 @@ let showCustomerBookings = (function() {
      * to parseBookings.
      */
     function showBookings() {
-        console.log("showBookings()");
         $.ajax({
             type: "GET",
             async: false,

@@ -37,7 +37,6 @@ let showAdminBookings = (function() {
      * @param json
      */
     function parseBookings(json) {
-        console.log("parseReviews()");
         let html = "";
 
         let keys = Object.keys(json);
@@ -56,7 +55,6 @@ let showAdminBookings = (function() {
      * to parseBookings.
      */
     function showBookings() {
-        console.log("showAdminBookings()");
         $.ajax({
             type: "GET",
             async: false,

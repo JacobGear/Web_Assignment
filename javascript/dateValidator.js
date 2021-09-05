@@ -12,7 +12,6 @@ let dateValidator = (function(){
      * @param userPickupDT
      */
     function checkAllSelectedDogs(requestedDogIds, availableDogs, userPickupDT){
-        console.log("checkAllSelectedDogs()");
         if(requestedDogIds.length === availableDogs.length && validateCheckOut()){
             let bookingObj = {};
             bookingObj.dogID = requestedDogIds;
@@ -37,7 +36,6 @@ let dateValidator = (function(){
      * @param requestedDogIds
      */
     function checkBooking(userPickupDT, requestedDogIds) {
-        console.log("checkBooking()");
         let availableDogs = [];
 
         for(let booking of bookingsArray){
@@ -124,7 +122,6 @@ let dateValidator = (function(){
      * Gets user requested dogs from cart in local storage.
      */
     function getRequestedDogs(){
-        console.log("getRequestedDogs()");
         let userDateTime = $("#dateTime").val();
         let userPickupDT = new Date(userDateTime);
 
@@ -142,7 +139,6 @@ let dateValidator = (function(){
      * @param json
      */
     function getBookingsList(json){
-        console.log("getBookingsList()");
         let bookingsList = [];
         let keys = Object.keys(json);
         let bookingsObj = json[keys]; // bookings object
@@ -158,7 +154,6 @@ let dateValidator = (function(){
      * Uses ajax method to import bookings json file.
      */
     function importBookings() {
-        console.log("importBookings()");
         $.ajax({
             type: "GET",
             async: false,
@@ -176,7 +171,6 @@ let dateValidator = (function(){
      * @param bookingObj
      */
     function updateLocalStorage(bookingObj){
-        console.log("updateLocalStorage()");
         let getBookings = window.localStorage.getItem("bookings");
         if(getBookings === null){
             let bookingsObj = {};
@@ -198,7 +192,6 @@ let dateValidator = (function(){
      * @returns {boolean}
      */
     function validateCheckOut(){
-        console.log("validateCheckOut()");
         let userName = $("#userName").val();
         checkUserName(userName);
         let dateTime = $("#dateTime").val();

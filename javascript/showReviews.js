@@ -8,8 +8,6 @@ let Reviews = (function() {
      * @param reviews
      */
     function parseReviews(reviews) {
-        console.log("parseReviews()");
-
         let html = "";
         for(let review of reviews){
             html += "<div class='review'>";
@@ -26,7 +24,6 @@ let Reviews = (function() {
      * parseReviews.
      */
     function showReviews() {
-        console.log("showReviews()");
         $.ajax({
             type: "GET",
             async: false,

@@ -21,7 +21,6 @@ let animalsImport = (function(){
      * @returns {*}
      */
     function addImage(dog, html) {
-        console.log("addImage()");
         if(dog.dogId === "DW-001") {
             html += "<img class='images' src=\"./images/small.jpg\" alt=\"Small\">";
         } else if(dog.dogId === "DW-002") {
@@ -42,7 +41,6 @@ let animalsImport = (function(){
      * @returns {*}
      */
     function htmlFormatting(dog, dogKey, html) {
-        console.log("htmlFormatting()");
         if(dogKey === "pricePerHour") {
             html += "<li>" + "$" + "<object class='price'>" + dog[dogKey] + "</object>" +
                 "/hour" + "</li>";
@@ -62,7 +60,6 @@ let animalsImport = (function(){
      * @param json
      */
     function jsonToHtml(json) {
-        console.log("jsonToHTml()");
         let html = "";
         let keys = Object.keys(json);
         let animals = json[keys];
@@ -88,7 +85,6 @@ let animalsImport = (function(){
      * ajax method to import the json animals.
      */
     function importAnimals() {
-        console.log("importAnimals()");
         $.ajax({
             type: "GET",
             async: false,

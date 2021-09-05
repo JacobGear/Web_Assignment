@@ -10,7 +10,6 @@ let map = (function () {
      * Inserts the geoJson and on success sends the data to markers.
      */
     function insertGeo() {
-        console.log("insertGeo()");
         $.ajax({
             type: "GET",
             url: "./json/POI.geojson",
@@ -25,7 +24,6 @@ let map = (function () {
      * Gets the map from leaflet and adds it to the map variable to be displayed.
      */
     function mapSetup(){
-        console.log("mapSetup()");
         map = L.map('map').setView([-45.875, 170.500], 15);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             { maxZoom: 18,
@@ -40,7 +38,6 @@ let map = (function () {
      * @param markerLocations
      */
     function markers(markerLocations){
-        console.log("markers()");
         L.geoJson(markerLocations, {
             onEachFeature: function (feature, layer) {
                 let content = "Name: " + feature.properties.name + "<br>";
@@ -63,7 +60,6 @@ let map = (function () {
      * Function for show/hiding walks and parks if box is checked or not.
      */
     function showHide() {
-        console.log("showHide()");
         /* jshint -W040 */
         if($(this).attr("id") === "showParks") {
             if($(this).prop('checked')) parks.addTo(map);

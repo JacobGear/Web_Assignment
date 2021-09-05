@@ -6,7 +6,6 @@ let showCart = (function(){
      * Clears cart in local storage then loads the document.
      */
     function clearCart() {
-        console.log("clearCart()");
         window.localStorage.removeItem("cart");
         document.location.reload(true);
     }
@@ -17,7 +16,6 @@ let showCart = (function(){
      * @returns {null|any}
      */
     function getCart() {
-        console.log("getCart()");
         let cart = window.localStorage.getItem("cart");
         if(cart !== null){
             return JSON.parse(cart);
@@ -31,7 +29,6 @@ let showCart = (function(){
      * then displays it.
      */
     function showCart() {
-        console.log("showCart()");
         let cart = getCart();
         let cartList = $("#cartList");
         let listString = "";
