@@ -8,7 +8,6 @@ let animalsImport = (function(){
      * @returns {*}
      */
     function addButtons(html){
-        console.log("addDropList()");
         html += "<button type=\"button\" class='makeBooking'>Make Booking</button>";
         html += "<button type=\"button\" class='showBookings'>Show Bookings</button>";
         return html;
