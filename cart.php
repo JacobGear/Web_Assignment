@@ -1,3 +1,7 @@
+<?php
+session_start();
+$_SESSION['lastPage'] = $_SERVER['PHP_SELF'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +10,7 @@
     <script src="javascript/jquery-3.6.0-un.js"></script>
     <script src="javascript/showCart.js"></script>
     <script src="javascript/dateValidator.js"></script>
-
+    <script src="javascript/login.js"></script>
 </head>
 
 <body>
@@ -14,11 +18,26 @@
     <header class="menu">
         <ul>
             <li class="logo"><img src="images/pug_logo.png"></li>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="products.php">Products</a></li>
+            <li><a href="contact.php">Contact</a></li>
             <li class="active">Cart</li>
-            <li><a href="#" class="sign"><span>Log In</span></a></li>
+            <?php if (isset($_SESSION['authenticatedUser'])) {
+                echo '<li><a href="admin/editor.php">Admin</a></li>';
+                echo "Welcome, " . $_SESSION['authenticatedUser'];
+                echo '<form id="logoutForm" action="app/logout.php" method="post">';
+                //echo '<li><a href="#" class="signOut"><span>Log Out</span></a></li>';
+                echo '<input type="submit" class="signOut" value="Logout">';
+                echo '</form>';
+            } elseif (isset($_SESSION['publicUser'])) {
+                echo "Welcome, " . $_SESSION['publicUser'];
+                echo '<form id="logoutForm" action="app/logout.php" method="post">';
+                //echo '<li><a href="#" class="signOut"><span>Log Out</span></a></li>';
+                echo '<input type="submit" class="signOut" value="Logout">';
+                echo '</form>';
+            } else { ?>
+                <li><a href="#" class="sign"><span>Log In</span></a></li>
+            <?php } ?>
         </ul>
     </header>
 
@@ -38,14 +57,27 @@
                 <p>
                     <label for="userName">User name:</label>
                     <input type="text" name="userName" id="userName">
+                    <?php
+                    if (isset($_SESSION['userName'])) {
+                        $name = $_SESSION['userName'];
+                        echo "value='$name'";
+                    }
+                    ?>
+
                 </p>
                 <p>
                     <label for="dateTime">Pick up time:</label>
                     <input type="datetime-local" name="mytime" id="dateTime" placeholder="Select Date time">
+                    <?php
+                    if (isset($_SESSION['mytime'])) {
+                        $name = $_SESSION['mytime'];
+                        echo "value='$name'";
+                    }
+                    ?>
                 </p>
                 <p>
                     <label for="numHours">Number of hours:</label>
-                    <select name="cars" id="numHours">
+                    <select name="numHours" id="numHours">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -55,6 +87,12 @@
                         <option value="4">7</option>
                         <option value="4">8</option>
                     </select>
+                    <?php
+                    if (isset($_SESSION['numHours'])) {
+                        $name = $_SESSION['numHours'];
+                        echo "value='$name'";
+                    }
+                    ?>
                 </p>
             </fieldset>
 

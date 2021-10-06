@@ -14,7 +14,7 @@ let dateValidator = (function(){
     function checkAllSelectedDogs(requestedDogIds, availableDogs, userPickupDT){
         if(requestedDogIds.length === availableDogs.length && validateCheckOut()){
             let bookingObj = {};
-            bookingObj.dogID = requestedDogIds;
+            bookingObj.dogId = requestedDogIds;
             bookingObj.name = $("#userName").val();
             bookingObj.pickup = {};
             bookingObj.pickup.day = userPickupDT.getDay().toString();
@@ -23,7 +23,8 @@ let dateValidator = (function(){
             bookingObj.pickup.time = userPickupDT.getHours() + ":" + userPickupDT.getMinutes();
             bookingObj.numHours = $("#numHours").val();
             updateLocalStorage(bookingObj);
-            alert("Booking successful!");
+            window.localStorage.removeItem("cart");
+            $("#cart").append("<script src=\"/assignment1/javascript/getCartContents.js\"></script>");
         } else {
             alert("Error try again");
         }
@@ -172,6 +173,7 @@ let dateValidator = (function(){
      */
     function updateLocalStorage(bookingObj){
         let getBookings = window.localStorage.getItem("bookings");
+        console.log(bookingObj);
         if(getBookings === null){
             let bookingsObj = {};
             bookingsObj.booking = [];
@@ -205,7 +207,6 @@ let dateValidator = (function(){
             return false;
         } else {
             errorFalse();
-            window.localStorage.removeItem("cart");
             return true;
         }
 

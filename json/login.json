@@ -1,0 +1,16 @@
+{
+  "Users": {
+    "Admins": [
+      {
+        "username": "admin",
+        "password": "admin"
+      }
+    ],
+    "Public": [
+      {
+        "username": "user",
+        "password": "user"
+      }
+    ]
+  }
+}

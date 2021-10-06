@@ -1,0 +1,2 @@
+$out = fopen("php://stdout", "w");
+fwrite($out, "hello world");

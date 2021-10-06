@@ -1,3 +1,7 @@
+<?php
+session_start();
+$_SESSION['lastPage'] = $_SERVER['PHP_SELF'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +14,7 @@
   <script src="leaflet/leaflet-src.js"></script>
   <script src="leaflet/leaflet-src.esm.js"></script>
   <script src="javascript/map.js"></script>
+  <script src="javascript/login.js"></script>
 
 </head>
 
@@ -18,11 +23,26 @@
   <header class="menu">
     <ul>
       <li class="logo"><img src="images/pug_logo.png"></li>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="products.html">Products</a></li>
+      <li><a href="index.php">Home</a></li>
+      <li><a href="products.php">Products</a></li>
       <li class="active">Contact</li>
-      <li><a href="cart.html">Cart</a></li>
-      <li><a href="#" class="sign"><span>Log In</span></a></li>
+      <li><a href="cart.php">Cart</a></li>
+        <?php if (isset($_SESSION['authenticatedUser'])) {
+            echo '<li><a href="admin/editor.php">Admin</a></li>';
+            echo "Welcome, " . $_SESSION['authenticatedUser'];
+            echo '<form id="logoutForm" action="app/logout.php" method="post">';
+            //echo '<li><a href="#" class="signOut"><span>Log Out</span></a></li>';
+            echo '<input type="submit" class="signOut" value="Logout">';
+            echo '</form>';
+        } elseif (isset($_SESSION['publicUser'])) {
+            echo "Welcome, " . $_SESSION['publicUser'];
+            echo '<form id="logoutForm" action="app/logout.php" method="post">';
+            //echo '<li><a href="#" class="signOut"><span>Log Out</span></a></li>';
+            echo '<input type="submit" class="signOut" value="Logout">';
+            echo '</form>';
+        } else { ?>
+            <li><a href="#" class="sign"><span>Log In</span></a></li>
+        <?php } ?>
     </ul>
     <h1>Head office, parks and walks!</h1><br>
   </header>

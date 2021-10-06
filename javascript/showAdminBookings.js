@@ -21,12 +21,11 @@ let showAdminBookings = (function() {
      * @returns {*}
      */
     function htmlFormatting(bookingObj, html) {
-        html += "<div class='booking'>";
         html += "<strong>Requested dogs: </strong>" + bookingObj.dogId + "<br>";
         html += "<strong>Username: </strong>" + bookingObj.name + "<br>";
         html += "<strong>Pickup time: </strong>" + getDateTime(bookingObj.pickup) + "<br>";
         html += "<strong>Number of hours: </strong>" + bookingObj.numHours;
-        html += "</div>";
+        html += "<br><button type=\"button\" class='cancelOrder'>Cancel Order</button>";
         html += "<hr />";
         return html;
     }
@@ -43,8 +42,10 @@ let showAdminBookings = (function() {
         let bookings = json[keys]; // bookings object
         let orderNumber = 1;
         for(let bookingObj of bookings.booking){
-            html += "<object class='orderNumber'> Order number: " + orderNumber + "</object>";
+            html += "<div class='booking'>";
+            html += "<object class='orderNumber'> Order number: " + orderNumber + "</object><br>";
             html = htmlFormatting(bookingObj, html);
+            html += "</div>";
             orderNumber++;
         }
         $(".adminBookings").html(html);
@@ -59,7 +60,7 @@ let showAdminBookings = (function() {
             type: "GET",
             async: false,
             timeout: 30000,
-            url: "./json/bookings.json",
+            url: "../json/bookings.json",
             cache: false,
             success: function(data) {
                 parseBookings(data);

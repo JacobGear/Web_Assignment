@@ -28,6 +28,8 @@ let animalsImport = (function(){
             html += "<img class='images' src=\"./images/large.jpg\" alt=\"Large\">";
         } else if(dog.dogId === "DW-004") {
             html += "<img class='images' src=\"./images/huge.jpg\" alt=\"Huge\">";
+        } else {
+            html += "<img class='noImage' src=\"./images/Image-not-yet-available.jpg\" alt=\"NotAvailable\">";
         }
         return html;
     }
@@ -55,7 +57,7 @@ let animalsImport = (function(){
 
     /**
      * Takes json data converts it to html then displays the html in
-     * the products.html page.
+     * the products.php page.
      * @param json
      */
     function jsonToHtml(json) {
