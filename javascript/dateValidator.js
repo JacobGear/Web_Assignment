@@ -17,7 +17,7 @@ let dateValidator = (function(){
             bookingObj.dogId = requestedDogIds;
             bookingObj.name = $("#userName").val();
             bookingObj.pickup = {};
-            bookingObj.pickup.day = userPickupDT.getDay().toString();
+            bookingObj.pickup.day = userPickupDT.getDate().toString();
             bookingObj.pickup.month = userPickupDT.getMonth().toString();
             bookingObj.pickup.year = userPickupDT.getFullYear().toString();
             bookingObj.pickup.time = userPickupDT.getHours() + ":" + userPickupDT.getMinutes();
@@ -128,6 +128,10 @@ let dateValidator = (function(){
 
         let requestedDogIds = [];
         let cart = window.localStorage.getItem("cart");
+        if(cart === null) {
+            alert("Cart is empty");
+            return;
+        }
         cart = JSON.parse(cart);
         for(let item of cart){
             requestedDogIds.push(item.id);
@@ -173,7 +177,6 @@ let dateValidator = (function(){
      */
     function updateLocalStorage(bookingObj){
         let getBookings = window.localStorage.getItem("bookings");
-        console.log(bookingObj);
         if(getBookings === null){
             let bookingsObj = {};
             bookingsObj.booking = [];

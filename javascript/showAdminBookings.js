@@ -25,7 +25,7 @@ let showAdminBookings = (function() {
         html += "<strong>Username: </strong>" + bookingObj.name + "<br>";
         html += "<strong>Pickup time: </strong>" + getDateTime(bookingObj.pickup) + "<br>";
         html += "<strong>Number of hours: </strong>" + bookingObj.numHours;
-        html += "<br><button type=\"button\" class='cancelOrder'>Cancel Order</button>";
+        html += "<br><button type=\"button\" class='cancelOrder'>Cancel Booking</button>";
         html += "<hr />";
         return html;
     }

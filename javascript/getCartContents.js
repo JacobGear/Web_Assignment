@@ -10,9 +10,10 @@ let GetCartContents = (function(){
             datatype: 'JSON',
             contentType: "application/json; charset=utf-8",
             async: false,
-            success: function(data) {
-                $("#errorMessage").html(data);
+            success: function() {
+                alert("Successful");
                 window.localStorage.removeItem("bookings");
+                location.reload();
             },
             error: function(){
                 alert("Ajax Failed");

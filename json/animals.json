@@ -12,9 +12,9 @@
             {
                 "dogId": "DW-002",
                 "dogName": "Rover",
-                "dogType": "Springer Spaniel",
+                "dogType": "Springer Spanial",
                 "dogSize": "Medium",
-                "description": "Very energetic, loves water. Good with kids",
+                "description": "Very energetic, loves water. Good with kids.",
                 "pricePerHour": "5.0"
             },
             {
@@ -30,16 +30,8 @@
                 "dogName": "Digby",
                 "dogType": "St. Bernard",
                 "dogSize": "Huge",
-                "description": "Excellent horse replacement",
+                "description": "Excellent horse replacement.",
                 "pricePerHour": "10.0"
-            },
-            {
-                "dogId": "DW-005",
-                "dogName": "Rufus",
-                "dogType": "Pug",
-                "dogSize": "Small",
-                "description": "Sleeps alot.",
-                "pricePerHour": "2.0"
             }
         ]
     }

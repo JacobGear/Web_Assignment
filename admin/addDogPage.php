@@ -1,6 +1,9 @@
 <?php
 session_start();
 $_SESSION['lastPage'] = $_SERVER['PHP_SELF'];
+if(!isset($_SESSION['authenticatedUser'])) {
+    header("Location: ../index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

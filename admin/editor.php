@@ -1,6 +1,9 @@
 <?php
 session_start();
 $_SESSION['lastPage'] = $_SERVER['PHP_SELF'];
+if(!isset($_SESSION['authenticatedUser'])) {
+    header("Location: ../index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,11 +23,11 @@ $_SESSION['lastPage'] = $_SERVER['PHP_SELF'];
         <li><a href="../contact.php">Contact</a></li>
         <li><a href="../cart.php">Cart</a></li>
         <li class="active">Admin</li>
-        <?php
-         echo "Admin user: " . $_SESSION['authenticatedUser'];
-        ?>
+        <li><a href="admin.php">Bookings</a></li>
     </ul>
-
+    <?php
+    echo "<object class='admin'>Admin user: " . $_SESSION['authenticatedUser'] . "</object>";
+    ?>
 
     <h1>Dogs:</h1>
 </header>

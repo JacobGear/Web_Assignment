@@ -122,6 +122,7 @@ a {
     background-image: linear-gradient(#42455a, #42455a), radial-gradient(circle at top left, #fd00da, #19d7f8);
     background-origin: border-box;
     background-clip: content-box, border-box;
+    cursor: pointer;
 }
 .banner {
     width: 80%;
@@ -283,5 +284,23 @@ tr:nth-child(even) {
 }
 .noImage {
     height: 200px;
-    width: 30%;
+    width: 20%;
+}
+.welcome{
+    display: inline-block;
+    color: white;
+    float: right;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+.welcome form {
+    margin-left: 35px;
+    margin-top: 5px;
+}
+.admin{
+    display: inline-block;
+    color: white;
+    float: right;
+    margin-right: 20px;
+    margin-top: 20px;
 }

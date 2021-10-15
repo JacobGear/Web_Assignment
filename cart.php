@@ -24,21 +24,27 @@ $_SESSION['lastPage'] = $_SERVER['PHP_SELF'];
             <li class="active">Cart</li>
             <?php if (isset($_SESSION['authenticatedUser'])) {
                 echo '<li><a href="admin/editor.php">Admin</a></li>';
-                echo "Welcome, " . $_SESSION['authenticatedUser'];
-                echo '<form id="logoutForm" action="app/logout.php" method="post">';
-                //echo '<li><a href="#" class="signOut"><span>Log Out</span></a></li>';
-                echo '<input type="submit" class="signOut" value="Logout">';
-                echo '</form>';
-            } elseif (isset($_SESSION['publicUser'])) {
-                echo "Welcome, " . $_SESSION['publicUser'];
-                echo '<form id="logoutForm" action="app/logout.php" method="post">';
-                //echo '<li><a href="#" class="signOut"><span>Log Out</span></a></li>';
-                echo '<input type="submit" class="signOut" value="Logout">';
-                echo '</form>';
-            } else { ?>
+                echo '<li><a href="admin/admin.php">Bookings</a></li>';
+            }
+            if (!isset($_SESSION['authenticatedUser']) && !isset($_SESSION['publicUser'])) { ?>
                 <li><a href="#" class="sign"><span>Log In</span></a></li>
             <?php } ?>
         </ul>
+        <?php if (isset($_SESSION['authenticatedUser'])) {
+            echo "<div class='welcome'>";
+            echo "Welcome " . $_SESSION['authenticatedUser'];
+            echo '<form id="logoutForm" action="app/logout.php" method="post">';
+            //echo '<li><a href="#" class="signOut"><span>Log Out</span></a></li>';
+            echo '<input type="submit" class="signOut" value="Logout">';
+            echo '</form></div>';
+        } elseif (isset($_SESSION['publicUser'])) {
+            echo "<div class='welcome'>";
+            echo "Welcome " . $_SESSION['publicUser'];
+            echo '<form id="logoutForm" action="app/logout.php" method="post">';
+            //echo '<li><a href="#" class="signOut"><span>Log Out</span></a></li>';
+            echo '<input type="submit" class="signOut" value="Logout">';
+            echo '</form></div>';
+        } ?>
     </header>
 
     <main id="cart">

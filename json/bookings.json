@@ -2,7 +2,10 @@
     "bookings": {
         "booking": [
             {
-                "dogId": ["DW-001", "DW-002"],
+                "dogId": [
+                    "DW-001",
+                    "DW-002"
+                ],
                 "name": "Garner Family",
                 "pickup": {
                     "day": "15",
@@ -13,7 +16,9 @@
                 "numHours": "4"
             },
             {
-                "dogId": ["DW-003"],
+                "dogId": [
+                    "DW-003"
+                ],
                 "name": "Mr and Mrs Jones",
                 "pickup": {
                     "day": "15",
@@ -24,7 +29,9 @@
                 "numHours": "6"
             },
             {
-                "dogId": ["DW-001"],
+                "dogId": [
+                    "DW-001"
+                ],
                 "name": "Sandy Shaw",
                 "pickup": {
                     "day": "16",
@@ -34,7 +41,6 @@
                 },
                 "numHours": "2"
             }
-
         ]
     }
 }

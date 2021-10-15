@@ -1,3 +1,10 @@
+<?php
+session_start();
+$_SESSION['lastPage'] = $_SERVER['PHP_SELF'];
+if(!isset($_SESSION['authenticatedUser'])) {
+    header("Location: ../index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,12 +19,16 @@
 <header class="menu">
     <ul>
         <li class="logo"><img src="../images/pug_logo.png"></li>
-        <li class="active">Home</li>
+        <li><a href="../index.php">Home</a></li>
         <li><a href="../products.php">Products</a></li>
         <li><a href="../contact.php">Contact</a></li>
         <li><a href="../cart.php">Cart</a></li>
-        <li><a href="#" class="sign"><span>Log In</span></a></li>
+        <li><a href="editor.php">Admin</a></li>
+        <li class="active">Bookings</li>
     </ul>
+    <?php
+    echo "<object class='admin'>Admin user: " . $_SESSION['authenticatedUser'] . "</object>";
+    ?>
     <h1>Customer Bookings:</h1><br>
 </header>
 
